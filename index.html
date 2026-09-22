@@ -109,6 +109,39 @@
     .sticker{ animation:wiggle 5.5s ease-in-out infinite; }
   }
   @keyframes wiggle{ 0%,100%{transform:rotate(-4deg);} 50%{transform:rotate(5deg);} }
+
+  .gallery{position:relative; margin:0 0 20px;}
+  .gallery-track{
+    display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory;
+    border-radius:16px; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .gallery-track::-webkit-scrollbar{display:none;}
+  .gallery-track img{
+    flex:0 0 82%; scroll-snap-align:center; width:82%; aspect-ratio:4/3;
+    object-fit:cover; border-radius:16px; border:1px solid var(--border);
+    background:rgba(0,0,0,.04);
+  }
+  @media (min-width:640px){
+    .gallery-track img{flex-basis:46%; width:46%;}
+  }
+  .gallery-caption{
+    text-align:center; font-size:13px; color:var(--muted); margin-top:10px;
+  }
+  .gallery-dots{display:flex; gap:6px; justify-content:center; margin-top:10px;}
+  .gallery-dots button{
+    width:7px; height:7px; border-radius:50%; border:none; padding:0;
+    background:var(--border); cursor:pointer; transition:background .2s ease, transform .2s ease;
+  }
+  .gallery-dots button.active{background:var(--accent); transform:scale(1.3);}
+  .gallery-nav{
+    position:absolute; top:50%; transform:translateY(-50%); width:38px; height:38px;
+    border-radius:50%; border:1px solid var(--border); background:var(--card);
+    color:var(--text); font-size:16px; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; box-shadow:var(--shadow); opacity:.92;
+  }
+  .gallery-nav.prev{left:-6px;} .gallery-nav.next{right:-6px;}
+  @media (max-width:520px){ .gallery-nav{display:none;} }
 </style>
 </head>
 <body>
@@ -121,6 +154,26 @@
 
   <section class="card" style="position:relative;">
     <h2><span class="badge">1</span>Квартира — Аль-Фараби 27</h2>
+
+    <div class="gallery">
+      <div class="gallery-track" id="gallery-track" tabindex="0" aria-label="Фото квартиры на Аль-Фараби 27">
+        <img src="photos/photo-bedroom.jpg" alt="Спальня с синей кроватью и бирюзовыми шторами" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-living-room.jpg" alt="Гостиная с диваном и телевизором" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-kitchen-dining.jpg" alt="Кухня с обеденным столом и голубым гарнитуром" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-living-kitchen-wide.jpg" alt="Общий вид гостиной и кухни" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-bathroom-1.jpg" alt="Ванная комната со стиральной машиной" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-bathroom-2.jpg" alt="Вторая ванная комната с ванной и полками" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-entrance-hall.jpg" alt="Прихожая со шкафом" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-hallway-mirror.jpg" alt="Коридор с большим зеркалом" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-kitchen-stove.jpg" alt="Варочная панель и духовой шкаф на кухне" loading="lazy" width="1024" height="681">
+        <img src="photos/photo-balcony.jpg" alt="Балкон с видом на жилой комплекс" loading="lazy" width="511" height="768">
+      </div>
+      <button class="gallery-nav prev" id="gallery-prev" aria-label="Предыдущее фото">‹</button>
+      <button class="gallery-nav next" id="gallery-next" aria-label="Следующее фото">›</button>
+      <div class="gallery-dots" id="gallery-dots"></div>
+      <p class="gallery-caption">Реальные фото квартиры — листайте свайпом или стрелками</p>
+    </div>
+
     <div class="info-grid">
       <div class="info-item"><div class="label">ЖК</div><div class="value">AIFARABI 27</div></div>
       <div class="info-item"><div class="label">Квартира</div><div class="value mono">№ 23</div></div>
@@ -176,6 +229,49 @@
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script type="module">
+(async () => {
+  try{
+    var track = document.getElementById('gallery-track');
+    var dotsWrap = document.getElementById('gallery-dots');
+    var imgs = Array.from(track.children);
+    imgs.forEach(function(_, i){
+      var b = document.createElement('button');
+      if(i===0) b.className='active';
+      b.setAttribute('aria-label', 'Фото ' + (i+1));
+      b.addEventListener('click', function(){ imgs[i].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'}); });
+      dotsWrap.appendChild(b);
+    });
+    var dots = Array.from(dotsWrap.children);
+
+    function syncDots(){
+      var center = track.scrollLeft + track.clientWidth/2;
+      var closest = 0, best = Infinity;
+      imgs.forEach(function(img, i){
+        var mid = img.offsetLeft + img.offsetWidth/2;
+        var d = Math.abs(mid - center);
+        if(d < best){ best = d; closest = i; }
+      });
+      dots.forEach(function(d, i){ d.classList.toggle('active', i===closest); });
+    }
+    track.addEventListener('scroll', function(){ requestAnimationFrame(syncDots); }, {passive:true});
+
+    document.getElementById('gallery-prev').addEventListener('click', function(){
+      track.scrollBy({left: -track.clientWidth*0.86, behavior:'smooth'});
+    });
+    document.getElementById('gallery-next').addEventListener('click', function(){
+      track.scrollBy({left: track.clientWidth*0.86, behavior:'smooth'});
+    });
+
+    var { animate } = await import('https://cdn.jsdelivr.net/npm/motion@11/+esm');
+    ['gallery-prev','gallery-next'].forEach(function(id){
+      var el = document.getElementById(id);
+      el.addEventListener('pointerdown', function(){ animate(el, {scale:0.85}, {duration:.12}); });
+      el.addEventListener('pointerup', function(){ animate(el, {scale:1}, {duration:.18}); });
+    });
+  }catch(e){ /* карусель на чистом CSS/scroll работает и без этого блока */ }
+})();
+</script>
 <script>
 (function(){
   var A = [43.227779, 76.940350];   // AIFARABI 27, кв. 23
