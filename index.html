@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AIFARABI 27 → ORTAU</title>
+<meta name="description" content="Как попасть в квартиру на Аль-Фараби 27 и маршрут до ЖК ORTAU">
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root{
+    --bg:#f5f5f7; --card:#ffffff; --text:#1d1d1f; --muted:#6e6e73;
+    --accent:#0071e3; --accent-2:#34c759; --border:rgba(0,0,0,.08);
+    --shadow:0 1px 3px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+    --radius:20px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#000000; --card:#1c1c1e; --text:#f5f5f7; --muted:#9a9aa0;
+      --accent:#0a84ff; --accent-2:#30d158; --border:rgba(255,255,255,.09);
+      --shadow:0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.5);
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:20px 16px 64px;
+  }
+  .wrap{max-width:760px;margin:0 auto;position:relative;}
+  header{padding:8px 4px 28px;}
+  h1{
+    font-size:clamp(26px,5vw,38px); font-weight:700; letter-spacing:-.02em;
+    margin:0 0 8px; line-height:1.1;
+  }
+  .subtitle{color:var(--muted); font-size:16px; margin:0;}
+  .card{
+    background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:24px; margin-bottom:20px;
+    animation:fadeInUp .5s ease-out both;
+  }
+  @keyframes fadeInUp{ from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+  @media (prefers-reduced-motion: reduce){ .card{animation:none;opacity:1;transform:none;} }
+  .card h2{
+    font-size:20px; font-weight:650; letter-spacing:-.01em; margin:0 0 14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .badge{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:30px;height:30px;border-radius:9px;background:var(--accent);
+    color:#fff; font-size:15px; flex:none;
+  }
+  .badge.green{background:var(--accent-2);}
+  #map{
+    width:100%; height:420px; border-radius:16px; overflow:hidden;
+    border:1px solid var(--border);
+  }
+  .row{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;}
+  .pill{
+    flex:1 1 200px; background:rgba(0,0,0,.03); border:1px solid var(--border);
+    border-radius:14px; padding:14px 16px;
+  }
+  @media (prefers-color-scheme: dark){ .pill{background:rgba(255,255,255,.05);} }
+  .pill .k{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:4px;}
+  .pill .v{font-size:17px; font-weight:600;}
+  .info-grid{display:grid; grid-template-columns:1fr; gap:12px;}
+  @media (min-width:520px){ .info-grid{grid-template-columns:1fr 1fr;} }
+  .info-item{
+    border:1px solid var(--border); border-radius:14px; padding:16px 18px;
+    background:rgba(0,0,0,.02);
+  }
+  @media (prefers-color-scheme: dark){ .info-item{background:rgba(255,255,255,.04);} }
+  .info-item .label{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:6px;}
+  .info-item .value{font-size:19px; font-weight:650; letter-spacing:-.01em; word-break:break-word;}
+  .value.mono{font-variant-numeric:tabular-nums; letter-spacing:0;}
+  ol.steps{margin:0; padding-left:22px; display:flex; flex-direction:column; gap:14px;}
+  ol.steps li{font-size:16px; line-height:1.5;}
+  ol.steps b{font-weight:650;}
+  .note{
+    font-size:14px; color:var(--muted); background:rgba(255,159,10,.1);
+    border:1px solid rgba(255,159,10,.25); border-radius:12px; padding:12px 14px; margin-top:16px;
+    line-height:1.5;
+  }
+  a.btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    min-height:52px; padding:0 22px; border-radius:14px; text-decoration:none;
+    font-weight:600; font-size:16px; transition:transform .15s ease, opacity .15s ease;
+  }
+  a.btn.primary{background:var(--accent); color:#fff;}
+  a.btn.secondary{background:rgba(0,0,0,.05); color:var(--text); border:1px solid var(--border);}
+  @media (prefers-color-scheme: dark){ a.btn.secondary{background:rgba(255,255,255,.08);} }
+  a.btn:active{transform:scale(.97);}
+  a.btn:focus-visible, .card:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .btn-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:12px; font-size:14px; color:var(--muted);}
+  .legend span{display:inline-flex; align-items:center; gap:8px;}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .dot.blue{background:#0071e3;}
+  .dot.green{background:#34c759;}
+  .line-swatch{width:22px;height:3px;border-radius:2px;background:#0071e3;display:inline-block;}
+  footer{text-align:center; color:var(--muted); font-size:13px; margin-top:12px;}
+  .sticker{
+    position:absolute; width:104px; height:104px; pointer-events:none;
+    user-select:none; filter:drop-shadow(0 6px 14px rgba(0,0,0,.18));
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .sticker{ animation:wiggle 5.5s ease-in-out infinite; }
+  }
+  @keyframes wiggle{ 0%,100%{transform:rotate(-4deg);} 50%{transform:rotate(5deg);} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Как добраться</h1>
+    <p class="subtitle">Инструкция для входа в квартиру на Аль-Фараби 27 и маршрут до Алексея в ЖК ORTAU</p>
+  </header>
+
+  <section class="card" style="position:relative;">
+    <h2><span class="badge">1</span>Квартира — Аль-Фараби 27</h2>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">ЖК</div><div class="value">AIFARABI 27</div></div>
+      <div class="info-item"><div class="label">Квартира</div><div class="value mono">№ 23</div></div>
+      <div class="info-item"><div class="label">Блок / этаж</div><div class="value">4 блок, 5 этаж</div></div>
+      <div class="info-item"><div class="label">Код от двери</div><div class="value mono">170999</div></div>
+      <div class="info-item"><div class="label">Wi-Fi пароль</div><div class="value mono">87088000999</div></div>
+      <div class="info-item"><div class="label">Диспетчер (только WhatsApp)</div><div class="value mono">+7 777 551 97 32</div></div>
+    </div>
+
+    <ol class="steps" style="margin-top:20px;">
+      <li>Подойдите к <b>калитке</b> двора — нажмите кнопку с иконкой «человечек с фуражкой», ответит диспетчер. Назовите <b>квартиру 23</b>, вам откроют.</li>
+      <li>В <b>подъезде</b> (4 блок) на домофоне такая же кнопка «человечек с фуражкой» — диспетчер откроет дверь подъезда.</li>
+      <li>Поднимитесь на <b>5 этаж</b>, квартира <b>№ 23</b>. Код на входной двери квартиры: <b>170999</b>.</li>
+    </ol>
+
+    <div class="note">Диспетчеру звонить <b>только в WhatsApp</b>: +7 777 551 97 32.</div>
+
+    <div class="btn-row">
+      <a class="btn primary" href="https://2gis.kz/almaty/geo/70030076451745488/76.940350,43.227779" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+      <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&query=43.227779,76.940350" target="_blank" rel="noopener">Открыть в Google Картах</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="badge green">2</span>Маршрут до ЖК ORTAU (к Алексею)</h2>
+    <p style="color:var(--muted); margin:0 0 14px; font-size:15px;">Улица Наурызбай батыра, 127, блок 3, Алматы — около 15–20 минут пешком или ~3 минуты на машине от AIFARABI 27.</p>
+
+    <div id="map" tabindex="0" aria-label="Карта с маршрутом от AIFARABI 27 до ЖК ORTAU"></div>
+
+    <div class="legend">
+      <span><span class="dot blue"></span>AIFARABI 27 (кв. 23)</span>
+      <span><span class="dot green"></span>ЖК ORTAU, Наурызбай батыра 127</span>
+      <span><span class="line-swatch"></span>маршрут на автомобиле, ≈1,7 км</span>
+    </div>
+
+    <div class="row">
+      <div class="pill"><div class="k">Расстояние</div><div class="v">≈ 1,7 км</div></div>
+      <div class="pill"><div class="k">На машине</div><div class="v">≈ 3–5 мин</div></div>
+      <div class="pill"><div class="k">Пешком</div><div class="v">≈ 20 мин</div></div>
+    </div>
+
+    <div class="note">Координаты блока 3 ЖК ORTAU отдельно в 2ГИС не выделены — на карте показан центр комплекса по соседним корпусам (блоки 1, 2, 4, 5 стоят в 30–90 м друг от друга); нужный подъезд уточняйте по указателям во дворе комплекса.</div>
+
+    <div class="btn-row">
+      <a class="btn primary" id="route-2gis" href="#" target="_blank" rel="noopener">Маршрут в 2ГИС</a>
+      <a class="btn secondary" id="route-gmaps" href="#" target="_blank" rel="noopener">Маршрут в Google Картах</a>
+    </div>
+  </section>
+
+  <img class="sticker" style="top:10px; right:-6px;" src="sticker-fox.png" alt="Милый лисёнок" loading="lazy" onerror="this.style.display='none'">
+
+  <footer>Страница создана для удобства заезда и навигации между двумя квартирами в Алматы.</footer>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+  var A = [43.227779, 76.940350];   // AIFARABI 27, кв. 23
+  var B = [43.2366, 76.9375];       // ЖК ORTAU, Наурызбай батыра 127 (центр по блокам 1/2/4/5)
+
+  var routeLatLon = [[43.22737,76.940338],[43.227087,76.93993],[43.227057,76.939887],[43.226973,76.939755],[43.226935,76.939693],[43.227371,76.939118],[43.227672,76.93871],[43.22799,76.938333],[43.228188,76.938085],[43.22851,76.937948],[43.22875,76.937864],[43.22931,76.937767],[43.22972,76.937696],[43.229802,76.937681],[43.230908,76.937472],[43.232624,76.937084],[43.232889,76.937019],[43.234734,76.936543],[43.234854,76.936515],[43.23502,76.936459],[43.235661,76.936241],[43.236062,76.936092],[43.236327,76.935966],[43.236525,76.93588],[43.236801,76.935728],[43.237325,76.935411],[43.237381,76.935432],[43.237446,76.935441],[43.237509,76.935445],[43.237555,76.935465],[43.237602,76.935509],[43.237637,76.935571],[43.237706,76.935723],[43.237765,76.936579],[43.237812,76.937256],[43.237817,76.937329],[43.237883,76.938265],[43.237893,76.938427],[43.237738,76.938397],[43.237092,76.938496],[43.237084,76.93841],[43.237047,76.93803],[43.237029,76.937846],[43.236981,76.937805]];
+
+  var map = L.map('map', {scrollWheelZoom:false}).setView([43.2322, 76.9385], 14);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+  }).addTo(map);
+
+  var blueIcon = L.divIcon({
+    className:'', html:'<div style="width:16px;height:16px;border-radius:50%;background:#0071e3;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>',
+    iconSize:[16,16], iconAnchor:[8,8]
+  });
+  var greenIcon = L.divIcon({
+    className:'', html:'<div style="width:16px;height:16px;border-radius:50%;background:#34c759;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)"></div>',
+    iconSize:[16,16], iconAnchor:[8,8]
+  });
+
+  L.marker(A, {icon: blueIcon}).addTo(map).bindPopup('<b>AIFARABI 27</b><br>кв. 23, 4 блок, 5 этаж');
+  L.marker(B, {icon: greenIcon}).addTo(map).bindPopup('<b>ЖК ORTAU</b><br>Наурызбай батыра 127, блок 3');
+
+  var poly = L.polyline(routeLatLon, {color:'#0071e3', weight:5, opacity:.85}).addTo(map);
+  map.fitBounds(poly.getBounds(), {padding:[28,28]});
+
+  document.getElementById('route-2gis').href =
+    'https://2gis.kz/almaty/directions/points/' + A[1] + ',' + A[0] + ';' + B[1] + ',' + B[0];
+  document.getElementById('route-gmaps').href =
+    'https://www.google.com/maps/dir/?api=1&origin=' + A[0] + ',' + A[1] + '&destination=' + B[0] + ',' + B[1] + '&travelmode=driving';
+})();
+</script>
+</body>
+</html>
