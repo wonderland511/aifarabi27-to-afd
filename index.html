@@ -190,31 +190,6 @@
   }
   .gate-error{color:#ff453a; font-size:13px; min-height:18px; margin-top:10px;}
 
-  .cw{padding-top:22px; margin-top:22px; border-top:1px solid var(--border);}
-  .cw:first-of-type{padding-top:0; margin-top:8px; border-top:none;}
-  .cw h3{font-size:19px; font-weight:650; letter-spacing:-.01em; margin:14px 0 4px;}
-  .cw-meta{font-size:14px; color:var(--muted); line-height:1.5; margin:0 0 4px;}
-  .cw-times{font-size:15px; font-weight:600; margin:6px 0 12px;}
-  .cw-gallery{position:relative; margin:0 0 6px;}
-  .cw-track{
-    display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory;
-    border-radius:14px; -webkit-overflow-scrolling:touch; scrollbar-width:none;
-  }
-  .cw-track::-webkit-scrollbar{display:none;}
-  .cw-track img{
-    flex:0 0 78%; scroll-snap-align:center; aspect-ratio:4/3; width:78%;
-    object-fit:cover; border-radius:14px; border:1px solid var(--border);
-    background:rgba(0,0,0,.04); cursor:zoom-in;
-  }
-  @media (min-width:520px){ .cw-track img{flex-basis:260px; width:260px;} }
-  .cw-track img:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
-  .cw-sub{font-size:13px; font-weight:650; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:18px 0 2px;}
-  table.prices{width:100%; border-collapse:collapse; font-size:15px;}
-  table.prices td{padding:9px 0; border-bottom:1px solid var(--border); vertical-align:top;}
-  table.prices tr:last-child td{border-bottom:none;}
-  table.prices td:last-child{text-align:right; font-weight:650; white-space:nowrap; padding-left:14px;}
-  table.prices .kzt{display:block; font-weight:400; font-size:12px; color:var(--muted);}
-  .cw-incl{font-size:14px; color:var(--muted); line-height:1.5; margin:10px 0 0;}
 </style>
 </head>
 <body>
@@ -312,115 +287,6 @@
     <div class="btn-row">
       <a class="btn primary" id="route-2gis" href="#" target="_blank" rel="noopener">Маршрут в 2ГИС</a>
       <a class="btn secondary" id="route-gmaps" href="#" target="_blank" rel="noopener">Маршрут в Google Картах</a>
-    </div>
-  </section>
-
-  <section class="card" id="coworkings">
-    <h2><span class="badge">3</span>Коворкинги рядом с ЖК ORTAU</h2>
-    <p style="color:var(--muted); margin:0 0 6px; font-size:15px;">Три коворкинга в нескольких минутах от ЖК ORTAU. Время — расчётное от ЖК ORTAU (по расстоянию с поправкой на улицы, не маршрут навигатора). Цены — сразу в долларах, в скобках тенге; курс $1 = 447,85 ₸ (официальный курс Нацбанка РК на 23.09.2026).</p>
-
-    <div class="cw">
-      <div class="cw-gallery">
-        <div class="cw-track" tabindex="0" aria-label="Фото коворкинга 16 on:ALT">
-          <img src="photos/cw-16onalt-1.jpg" alt="Рабочие места с арочными светильниками и синими нишами" loading="lazy">
-          <img src="photos/cw-16onalt-2.jpg" alt="Просторный зал с круглым столом и подвесными растениями" loading="lazy">
-          <img src="photos/cw-16onalt-3.jpg" alt="Зона отдыха с терракотовыми креслами и оливковыми деревьями" loading="lazy">
-          <img src="photos/cw-16onalt-4.jpg" alt="Open space с синим потолком и чёрными арочными светильниками" loading="lazy">
-        </div>
-        <button class="gallery-nav prev" aria-label="Предыдущее фото">‹</button>
-        <button class="gallery-nav next" aria-label="Следующее фото">›</button>
-      </div>
-      <h3>16 on:ALT</h3>
-      <p class="cw-meta">ЖК Керемет, мкр Керемет, 7 к34 · ежедневно 09:00–21:00</p>
-      <div class="cw-times">🚶 ≈2–3 мин · 🚗 ≈3 мин</div>
-      <table class="prices">
-        <tr><td>Open Space — час</td><td>$2,7<span class="kzt">1 200 ₸</span></td></tr>
-        <tr><td>Open Space — день</td><td>$15,6<span class="kzt">7 000 ₸</span></td></tr>
-        <tr><td>Open Space — месяц</td><td>$178,6<span class="kzt">80 000 ₸</span></td></tr>
-        <tr><td>Open Space — месяц, фиксированное место</td><td>$223,3<span class="kzt">100 000 ₸</span></td></tr>
-        <tr><td>Meeting room — час</td><td>$33,5<span class="kzt">15 000 ₸</span></td></tr>
-      </table>
-      <div class="btn-row">
-        <a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=16%20on%3AALT%20coworking%2C%20%D0%BC%D0%BA%D1%80%20%D0%9A%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D1%82%2C%207%20%D0%BA34%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B" target="_blank" rel="noopener">Открыть в Google Картах</a>
-        <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=43.2364265,76.9377950&amp;destination=16%20on%3AALT%20coworking%2C%20%D0%BC%D0%BA%D1%80%20%D0%9A%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D1%82%2C%207%20%D0%BA34%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B&amp;travelmode=walking" target="_blank" rel="noopener">Маршрут от ORTAU</a>
-      </div>
-    </div>
-
-    <div class="cw">
-      <div class="cw-gallery">
-        <div class="cw-track" tabindex="0" aria-label="Фото коворкинга Jas Coworking">
-          <img src="photos/cw-jas-1.jpg" alt="Рабочие места под лестницей у панорамных окон" loading="lazy">
-          <img src="photos/cw-jas-2.jpg" alt="Collaboration area с настенными портретами" loading="lazy">
-          <img src="photos/cw-jas-3.jpg" alt="Зона с высокими окнами и столиками" loading="lazy">
-          <img src="photos/cw-jas-4.jpg" alt="Переговорная с рядами столов и экраном" loading="lazy">
-          <img src="photos/cw-jas-5.jpg" alt="Холл со ступенями-трибуной у панорамных окон" loading="lazy">
-        </div>
-        <button class="gallery-nav prev" aria-label="Предыдущее фото">‹</button>
-        <button class="gallery-nav next" aria-label="Следующее фото">›</button>
-      </div>
-      <h3>Jas Coworking</h3>
-      <p class="cw-meta">просп. Сейфуллина, 609 · круглосуточно. Open Space — более 200 рабочих мест, продуманная шумоизоляция, мебель по европейскому стандарту, вход на мероприятия JAS Ventures Almaty, 3 часа meeting-room на 4 человек бесплатно.</p>
-      <div class="cw-times">🚶 ≈3–4 мин · 🚗 ≈4 мин</div>
-      <table class="prices">
-        <tr><td>Пол дня (09:00–18:00)</td><td>$16,7<span class="kzt">7 500 ₸</span></td></tr>
-        <tr><td>День (09:00–18:00)</td><td>$33,5<span class="kzt">15 000 ₸</span></td></tr>
-        <tr><td>10 дней подряд (доступ 24/7)</td><td>$134,0<span class="kzt">60 000 ₸</span></td></tr>
-        <tr><td>Месяц, место не фиксированное</td><td>$267,9<span class="kzt">120 000 ₸</span></td></tr>
-        <tr><td>Месяц, место фиксированное</td><td>$334,9<span class="kzt">150 000 ₸</span></td></tr>
-        <tr><td>Месяц Premium</td><td>$390,8<span class="kzt">175 000 ₸</span></td></tr>
-        <tr><td>Переговорная Event Area (до 40 чел.) — час</td><td>$44,7<span class="kzt">20 000 ₸</span></td></tr>
-        <tr><td>Переговорные A/B (до 25 чел.) — час</td><td>$33,5<span class="kzt">15 000 ₸</span></td></tr>
-      </table>
-      <p class="cw-incl">Во все тарифы «Рабочие места» входит: интернет 200 Мб/с, администратор, кухня, фитнес-зал, душевые, зоны отдыха (кофейня, collaboration area), клининг. В тариф «10 дней подряд» дополнительно — 1 час meeting-room на 4 человек и печать 20 ч/б страниц.</p>
-      <div class="btn-row">
-        <a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Jas%20Coworking%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF.%20%D0%A1%D0%B5%D0%B9%D1%84%D1%83%D0%BB%D0%BB%D0%B8%D0%BD%D0%B0%2C%20609%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B" target="_blank" rel="noopener">Открыть в Google Картах</a>
-        <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=43.2364265,76.9377950&amp;destination=Jas%20Coworking%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF.%20%D0%A1%D0%B5%D0%B9%D1%84%D1%83%D0%BB%D0%BB%D0%B8%D0%BD%D0%B0%2C%20609%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B&amp;travelmode=walking" target="_blank" rel="noopener">Маршрут от ORTAU</a>
-      </div>
-    </div>
-
-    <div class="cw">
-      <div class="cw-gallery">
-        <div class="cw-track" tabindex="0" aria-label="Фото коворкинга Coworking Office">
-          <img src="photos/cw-office-1.jpg" alt="Вход в Coworking Office в ТРК Forum" loading="lazy">
-          <img src="photos/cw-office-2.jpg" alt="Зона отдыха с серыми креслами и оранжевыми сиденьями" loading="lazy">
-          <img src="photos/cw-office-3.jpg" alt="Второй ярус и надпись Plan Action" loading="lazy">
-          <img src="photos/cw-office-4.jpg" alt="Рабочие места с картой мира на стене" loading="lazy">
-          <img src="photos/cw-office-5.jpg" alt="Зона с круглыми столами и принтером" loading="lazy">
-          <img src="photos/cw-office-6.jpg" alt="Переговорная на 4 человека с надписью Work Hard" loading="lazy">
-        </div>
-        <button class="gallery-nav prev" aria-label="Предыдущее фото">‹</button>
-        <button class="gallery-nav next" aria-label="Следующее фото">›</button>
-      </div>
-      <h3>Coworking Office</h3>
-      <p class="cw-meta">ТРК Forum, просп. Сейфуллина, 617, 4-й этаж · ежедневно 08:00–01:00</p>
-      <div class="cw-times">🚶 ≈6 мин · 🚗 ≈4 мин</div>
-      <div class="cw-sub">Рабочие места</div>
-      <table class="prices">
-        <tr><td>Welcome — разовое посещение Open Space</td><td>$13,4<span class="kzt">6 000 ₸</span></td></tr>
-        <tr><td>Почасовая оплата</td><td>$3,3<span class="kzt">1 500 ₸</span></td></tr>
-        <tr><td>Дневной абонемент</td><td>$14,5<span class="kzt">6 500 ₸</span></td></tr>
-        <tr><td>Месяц, свободное место</td><td>$156,3<span class="kzt">70 000 ₸</span></td></tr>
-        <tr><td>Месяц, закреплённое место</td><td>$178,6<span class="kzt">80 000 ₸</span></td></tr>
-      </table>
-      <p class="cw-incl">Welcome и почасовая: ресепшн, свободное место, интернет, доступ ко всему пространству (Welcome — ещё 10 стр. печати бесплатно). Дневной абонемент — то же плюс печать до 10 стр. Тариф «Месяц»: ресепшн, клининг, печать до 100 стр., 3 часа конференц-зала бесплатно.</p>
-      <div class="cw-sub">Конференц-залы (1 / 3 / 6 часов)</div>
-      <table class="prices">
-        <tr><td>Зал на 4 человека (доска, монитор)</td><td>$8,9 / $22,3 / $44,7<span class="kzt">4 000 / 10 000 / 20 000 ₸</span></td></tr>
-        <tr><td>Зал до 10 человек (доска, монитор)</td><td>$17,9 / $46,9 / $93,8<span class="kzt">8 000 / 21 000 / 42 000 ₸</span></td></tr>
-        <tr><td>Зал Атриум до 50 человек (панель 86″, радиомикрофон)</td><td>$33,5 / $89,3 / $158,5<span class="kzt">15 000 / 40 000 / 71 000 ₸</span></td></tr>
-      </table>
-      <div class="btn-row">
-        <a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=Coworking%20Office%2C%20%D0%A2%D0%A0%D0%9A%20Forum%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF.%20%D0%A1%D0%B5%D0%B9%D1%84%D1%83%D0%BB%D0%BB%D0%B8%D0%BD%D0%B0%2C%20617%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B" target="_blank" rel="noopener">Открыть в Google Картах</a>
-        <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=43.2364265,76.9377950&amp;destination=Coworking%20Office%2C%20%D0%A2%D0%A0%D0%9A%20Forum%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF.%20%D0%A1%D0%B5%D0%B9%D1%84%D1%83%D0%BB%D0%BB%D0%B8%D0%BD%D0%B0%2C%20617%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B&amp;travelmode=walking" target="_blank" rel="noopener">Маршрут от ORTAU</a>
-      </div>
-    </div>
-
-    <div class="lightbox" id="cw-lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фото коворкинга">
-      <button class="lightbox-close" id="cw-lightbox-close" aria-label="Закрыть">✕</button>
-      <button class="lightbox-nav prev" id="cw-lightbox-prev" aria-label="Предыдущее фото">‹</button>
-      <img id="cw-lightbox-img" src="" alt="">
-      <button class="lightbox-nav next" id="cw-lightbox-next" aria-label="Следующее фото">›</button>
-      <div class="lightbox-counter" id="cw-lightbox-counter"></div>
     </div>
   </section>
 
@@ -597,46 +463,6 @@
     'https://2gis.kz/almaty/directions/points/' + A[1] + ',' + A[0] + ';' + B[1] + ',' + B[0];
   document.getElementById('route-gmaps').href =
     'https://www.google.com/maps/dir/?api=1&origin=' + A[0] + ',' + A[1] + '&destination=' + B[0] + ',' + B[1] + '&travelmode=walking';
-})();
-</script>
-<script>
-(function(){
-  var lb=document.getElementById('cw-lightbox');
-  if(!lb) return;
-  var img=document.getElementById('cw-lightbox-img');
-  var counter=document.getElementById('cw-lightbox-counter');
-  var group=[], cur=0;
-  function show(){
-    img.src=group[cur].src; img.alt=group[cur].alt;
-    counter.textContent=(cur+1)+' / '+group.length;
-  }
-  function open(g,i){ group=g; cur=i; show(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
-  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
-  function step(d){ cur=(cur+d+group.length)%group.length; show(); }
-
-  document.querySelectorAll('.cw-gallery').forEach(function(w){
-    var track=w.querySelector('.cw-track');
-    var imgs=Array.from(track.querySelectorAll('img'));
-    imgs.forEach(function(im,i){
-      im.setAttribute('tabindex','0');
-      im.setAttribute('role','button');
-      im.addEventListener('click',function(){ open(imgs,i); });
-      im.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(imgs,i); } });
-    });
-    w.querySelector('.gallery-nav.prev').addEventListener('click',function(){ track.scrollBy({left:-track.clientWidth*0.86,behavior:'smooth'}); });
-    w.querySelector('.gallery-nav.next').addEventListener('click',function(){ track.scrollBy({left:track.clientWidth*0.86,behavior:'smooth'}); });
-  });
-
-  document.getElementById('cw-lightbox-close').addEventListener('click',close);
-  document.getElementById('cw-lightbox-prev').addEventListener('click',function(){ step(-1); });
-  document.getElementById('cw-lightbox-next').addEventListener('click',function(){ step(1); });
-  lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
-  document.addEventListener('keydown',function(e){
-    if(!lb.classList.contains('open')) return;
-    if(e.key==='Escape') close();
-    if(e.key==='ArrowLeft') step(-1);
-    if(e.key==='ArrowRight') step(1);
-  });
 })();
 </script>
 </body>
