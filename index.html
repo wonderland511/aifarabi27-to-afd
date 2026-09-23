@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AIFARABI 27 → Аль-Фараби 21</title>
-<meta name="description" content="Как попасть в квартиру на Аль-Фараби 27 и маршрут до ЖК Аль-Фараби">
+<title>AIFARABI 27 → AFD Plaza</title>
+<meta name="description" content="Как попасть в квартиру на Аль-Фараби 27 и маршрут до ЖК AFD Plaza">
 <link rel="preconnect" href="https://unpkg.com">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
@@ -233,7 +233,7 @@
 
   <header>
     <h1>Как добраться</h1>
-    <p class="subtitle">Инструкция для входа в квартиру на Аль-Фараби 27 и маршрут до ЖК Аль-Фараби</p>
+    <p class="subtitle">Инструкция для входа в квартиру на Аль-Фараби 27 и маршрут до ЖК AFD Plaza</p>
   </header>
 
   <section class="card" style="position:relative;">
@@ -293,11 +293,11 @@
     <h2><span class="badge green">2</span>Маршрут до ЖК Аль-Фараби</h2>
     <p style="color:var(--muted); margin:0 0 14px; font-size:15px;">Проспект Аль-Фараби, 21/4, блок 4, Алматы — около 6 минут пешком от AIFARABI 27.</p>
 
-    <div id="map" tabindex="0" aria-label="Карта с маршрутом от AIFARABI 27 до ЖК Аль-Фараби"></div>
+    <div id="map" tabindex="0" aria-label="Карта с маршрутом от AIFARABI 27 до ЖК AFD Plaza"></div>
 
     <div class="legend">
       <span><span class="dot blue"></span>AIFARABI 27 (кв. 23)</span>
-      <span><span class="dot green"></span>ЖК Аль-Фараби, пр. Аль-Фараби 21, блок 4</span>
+      <span><span class="dot green"></span>ЖК AFD Plaza, пр. Аль-Фараби 21, блок 4</span>
       <span><span class="line-swatch"></span>пешеходный маршрут, ≈425 м</span>
     </div>
 
@@ -307,7 +307,7 @@
       <div class="pill"><div class="k">Пешком</div><div class="v">≈ 6 мин</div></div>
     </div>
 
-    <div class="note">Точка на карте — блок 4 по адресу проспект Аль-Фараби, 21 (в 2ГИС этот адрес значится как «AFD Plaza»). Точный вход уточняйте на месте.</div>
+    <div class="note">Точка на карте — блок 4 по адресу проспект Аль-Фараби, 21/4. Точный вход уточняйте на месте.</div>
 
     <div class="btn-row">
       <a class="btn primary" id="route-2gis" href="#" target="_blank" rel="noopener">Маршрут в 2ГИС</a>
@@ -588,7 +588,7 @@
   });
 
   L.marker(A, {icon: blueIcon}).addTo(map).bindPopup('<b>AIFARABI 27</b><br>кв. 23, 4 блок, 5 этаж');
-  L.marker(B, {icon: greenIcon}).addTo(map).bindPopup('<b>ЖК Аль-Фараби</b><br>пр. Аль-Фараби 21, блок 4');
+  L.marker(B, {icon: greenIcon}).addTo(map).bindPopup('<b>ЖК AFD Plaza</b><br>пр. Аль-Фараби 21, блок 4');
 
   var poly = L.polyline(routeLatLon, {color:'#0071e3', weight:5, opacity:.85}).addTo(map);
   map.fitBounds(poly.getBounds(), {padding:[28,28]});
