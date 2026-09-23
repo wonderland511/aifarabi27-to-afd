@@ -311,12 +311,7 @@
   function unlock(){
     gate.style.display = 'none';
     content.style.display = '';
-    try{ localStorage.setItem('aifarabi_unlocked', '1'); }catch(e){}
   }
-
-  try{
-    if(localStorage.getItem('aifarabi_unlocked') === '1'){ unlock(); }
-  }catch(e){}
 
   function sha256(text){
     if(window.crypto && window.crypto.subtle){
