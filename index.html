@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AIFARABI 27 → ORTAU</title>
-<meta name="description" content="Как попасть в квартиру на Аль-Фараби 27 и маршрут до ЖК ORTAU">
+<title>AIFARABI 27 → Аль-Фараби 21</title>
+<meta name="description" content="Как попасть в квартиру на Аль-Фараби 27 и маршрут до ЖК Аль-Фараби">
 <link rel="preconnect" href="https://unpkg.com">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
@@ -233,7 +233,7 @@
 
   <header>
     <h1>Как добраться</h1>
-    <p class="subtitle">Инструкция для входа в квартиру на Аль-Фараби 27 и маршрут до ЖК ORTAU</p>
+    <p class="subtitle">Инструкция для входа в квартиру на Аль-Фараби 27 и маршрут до ЖК Аль-Фараби</p>
   </header>
 
   <section class="card" style="position:relative;">
@@ -290,24 +290,24 @@
   </section>
 
   <section class="card">
-    <h2><span class="badge green">2</span>Маршрут до ЖК ORTAU</h2>
-    <p style="color:var(--muted); margin:0 0 14px; font-size:15px;">Улица Наурызбай батыра, 127, блок 3, Алматы — около 15–20 минут пешком или ~3 минуты на машине от AIFARABI 27.</p>
+    <h2><span class="badge green">2</span>Маршрут до ЖК Аль-Фараби</h2>
+    <p style="color:var(--muted); margin:0 0 14px; font-size:15px;">Проспект Аль-Фараби, 21/4, блок 4, Алматы — около 6 минут пешком от AIFARABI 27.</p>
 
-    <div id="map" tabindex="0" aria-label="Карта с маршрутом от AIFARABI 27 до ЖК ORTAU"></div>
+    <div id="map" tabindex="0" aria-label="Карта с маршрутом от AIFARABI 27 до ЖК Аль-Фараби"></div>
 
     <div class="legend">
       <span><span class="dot blue"></span>AIFARABI 27 (кв. 23)</span>
-      <span><span class="dot green"></span>ЖК ORTAU, Наурызбай батыра 127</span>
-      <span><span class="line-swatch"></span>маршрут на автомобиле, ≈1,7 км</span>
+      <span><span class="dot green"></span>ЖК Аль-Фараби, пр. Аль-Фараби 21, блок 4</span>
+      <span><span class="line-swatch"></span>пешеходный маршрут, ≈425 м</span>
     </div>
 
     <div class="row">
-      <div class="pill"><div class="k">Расстояние</div><div class="v">≈ 1,7 км</div></div>
-      <div class="pill"><div class="k">На машине</div><div class="v">≈ 3–5 мин</div></div>
-      <div class="pill"><div class="k">Пешком</div><div class="v">≈ 20 мин</div></div>
+      <div class="pill"><div class="k">Расстояние</div><div class="v">≈ 425 м</div></div>
+      <div class="pill"><div class="k">На машине</div><div class="v">≈ 3 мин (≈1 км, объезд)</div></div>
+      <div class="pill"><div class="k">Пешком</div><div class="v">≈ 6 мин</div></div>
     </div>
 
-    <div class="note">Координаты блока 3 ЖК ORTAU отдельно в 2ГИС не выделены — на карте показан центр комплекса по соседним корпусам (блоки 1, 2, 4, 5 стоят в 30–90 м друг от друга); нужный подъезд уточняйте по указателям во дворе комплекса.</div>
+    <div class="note">Точка на карте — блок 4 по адресу проспект Аль-Фараби, 21 (в 2ГИС этот адрес значится как «AFD Plaza»). Точный вход уточняйте на месте.</div>
 
     <div class="btn-row">
       <a class="btn primary" id="route-2gis" href="#" target="_blank" rel="noopener">Маршрут в 2ГИС</a>
@@ -567,11 +567,11 @@
 <script>
 (function(){
   var A = [43.227779, 76.940350];   // AIFARABI 27, кв. 23
-  var B = [43.2366, 76.9375];       // ЖК ORTAU, Наурызбай батыра 127 (центр по блокам 1/2/4/5)
+  var B = [43.229609, 76.94241];
 
-  var routeLatLon = [[43.22737,76.940338],[43.227087,76.93993],[43.227057,76.939887],[43.226973,76.939755],[43.226935,76.939693],[43.227371,76.939118],[43.227672,76.93871],[43.22799,76.938333],[43.228188,76.938085],[43.22851,76.937948],[43.22875,76.937864],[43.22931,76.937767],[43.22972,76.937696],[43.229802,76.937681],[43.230908,76.937472],[43.232624,76.937084],[43.232889,76.937019],[43.234734,76.936543],[43.234854,76.936515],[43.23502,76.936459],[43.235661,76.936241],[43.236062,76.936092],[43.236327,76.935966],[43.236525,76.93588],[43.236801,76.935728],[43.237325,76.935411],[43.237381,76.935432],[43.237446,76.935441],[43.237509,76.935445],[43.237555,76.935465],[43.237602,76.935509],[43.237637,76.935571],[43.237706,76.935723],[43.237765,76.936579],[43.237812,76.937256],[43.237817,76.937329],[43.237883,76.938265],[43.237893,76.938427],[43.237738,76.938397],[43.237092,76.938496],[43.237084,76.93841],[43.237047,76.93803],[43.237029,76.937846],[43.236981,76.937805]];
+  var routeLatLon = [[43.227769, 76.940487], [43.227845, 76.940612], [43.227784, 76.940688], [43.227895, 76.940858], [43.227965, 76.940965], [43.228078, 76.941139], [43.22802, 76.941216], [43.228018, 76.941334], [43.228217, 76.941628], [43.228353, 76.941636], [43.228364, 76.941623], [43.228387, 76.941662], [43.228407, 76.941694], [43.228823, 76.941208], [43.228857, 76.941263], [43.229078, 76.941014], [43.229383, 76.941526], [43.22964, 76.942004], [43.229792, 76.942336], [43.229813, 76.942649], [43.229632, 76.94265]];
 
-  var map = L.map('map', {scrollWheelZoom:false}).setView([43.2322, 76.9385], 14);
+  var map = L.map('map', {scrollWheelZoom:false}).setView([43.2287, 76.9414], 16);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -588,7 +588,7 @@
   });
 
   L.marker(A, {icon: blueIcon}).addTo(map).bindPopup('<b>AIFARABI 27</b><br>кв. 23, 4 блок, 5 этаж');
-  L.marker(B, {icon: greenIcon}).addTo(map).bindPopup('<b>ЖК ORTAU</b><br>Наурызбай батыра 127, блок 3');
+  L.marker(B, {icon: greenIcon}).addTo(map).bindPopup('<b>ЖК Аль-Фараби</b><br>пр. Аль-Фараби 21, блок 4');
 
   var poly = L.polyline(routeLatLon, {color:'#0071e3', weight:5, opacity:.85}).addTo(map);
   map.fitBounds(poly.getBounds(), {padding:[28,28]});
@@ -596,7 +596,7 @@
   document.getElementById('route-2gis').href =
     'https://2gis.kz/almaty/directions/points/' + A[1] + ',' + A[0] + ';' + B[1] + ',' + B[0];
   document.getElementById('route-gmaps').href =
-    'https://www.google.com/maps/dir/?api=1&origin=' + A[0] + ',' + A[1] + '&destination=' + B[0] + ',' + B[1] + '&travelmode=driving';
+    'https://www.google.com/maps/dir/?api=1&origin=' + A[0] + ',' + A[1] + '&destination=' + B[0] + ',' + B[1] + '&travelmode=walking';
 })();
 </script>
 <script>
